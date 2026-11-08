@@ -1,0 +1,20 @@
+CREATE TABLE CU_Turnee (
+    CUTE_Id         INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    CUTE_Data       DATE NOT NULL,
+    CUTE_Denumire   NVARCHAR(200) NOT NULL,
+    CUTE_Localitate NVARCHAR(100) NULL
+);
+
+CREATE TABLE CU_TurneeDetaliu (
+    CUTD_Id      INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    CUTD_CUTE_Id INT NOT NULL,
+    CUTD_CUCU_Id INT NOT NULL,
+    CUTD_Tip     TINYINT NOT NULL, -- 1=Clasic 2=Rapid 3=Blitz 4=Alte
+    CUTD_Puncte  DECIMAL(5,1) NULL,
+    CUTD_Loc     INT NULL,
+    CONSTRAINT FK_CU_TurneeDetaliu_Turneu  FOREIGN KEY (CUTD_CUTE_Id) REFERENCES CU_Turnee(CUTE_Id),
+    CONSTRAINT FK_CU_TurneeDetaliu_Cursant FOREIGN KEY (CUTD_CUCU_Id) REFERENCES CU_Cursanti(CUCU_Id)
+);
+
+CREATE INDEX IX_CU_TurneeDetaliu_Turneu  ON CU_TurneeDetaliu (CUTD_CUTE_Id);
+CREATE INDEX IX_CU_TurneeDetaliu_Cursant ON CU_TurneeDetaliu (CUTD_CUCU_Id);

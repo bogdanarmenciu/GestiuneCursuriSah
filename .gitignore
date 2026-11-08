@@ -1,0 +1,29 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Documents
+*.docx
+*.xlsx
+*.pdf
+
+# Local settings (connection strings, credentials)
+appsettings.local.json
+*.local.config

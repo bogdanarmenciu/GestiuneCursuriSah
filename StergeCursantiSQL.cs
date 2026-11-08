@@ -1,0 +1,7 @@
+
+DELETE FROM CU_ContracteCursanti
+
+INSERT INTO CU_ContracteCursanti (CUCC_CUCU_Id, CUCC_CUCO_Id)
+SELECT DISTINCT CUCU_Id, CUCO_Id
+FROM CU_Contracte
+INNER JOIN CU_Cursanti ON CUCO_CUCU_Id = CUCU_Id;

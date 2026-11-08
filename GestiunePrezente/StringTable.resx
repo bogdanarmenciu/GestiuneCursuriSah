@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERR_DATA_MAI_MARE_DECAT_A_PREZENTEI" xml:space="preserve">
+    <value>Data prezentei trebuie sa fie in perioada abonamentului! Alegeti alta data de inceput a abonamentului!</value>
+  </data>
+  <data name="IDS_ERR_CNPCURSANT" xml:space="preserve">
+    <value>CNP-ul cursantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE" xml:space="preserve">
+    <value>Societatea este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_PRENUMECURSANT" xml:space="preserve">
+    <value>Prenumele cursantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_ABONAMENT" xml:space="preserve">
+    <value>Abonamentul este obligatoriu!</value>
+  </data>
+  <data name="IDS_INCASARE_ABONEMENTCURSANTI_ASK_DELETE" xml:space="preserve">
+    <value>Doriti sa stergeti incasarea selectionata?</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_BLOC" xml:space="preserve">
+    <value>Blocul este obligatoriu!</value>
+  </data>
+  <data name="IDS_UT_NU_ACCEASI_DIVIZIUNE_DE2ORI" xml:space="preserve">
+    <value>Nu va puteti conecta pe aceeasi diviziune de 2 ori de pe acelasi calculator!</value>
+  </data>
+  <data name="IDS_ERR_CISERIECURSANT" xml:space="preserve">
+    <value>Seria CI a cursantului este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_CNP_LUNGIME" xml:space="preserve">
+    <value>Lungimea CNP-ului trebuie sa fie de 13 numere!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_FUNCTIEREPREZENTANT" xml:space="preserve">
+    <value>Functia reprezentantului este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_DATANASTERIICURSANT" xml:space="preserve">
+    <value>Data nasterii cursantului este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_JUDET" xml:space="preserve">
+    <value>Judetul este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_TIPDOCUMENT" xml:space="preserve">
+    <value>Tipul documentului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_EMAL" xml:space="preserve">
+    <value>Emailul societatii este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_NUMEABONAMENT" xml:space="preserve">
+    <value>Numele abonamentului este obligatoriu!</value>
+  </data>
+  <data name="IDS_LOGIN_PAROLA" xml:space="preserve">
+    <value>Specificaţi parola!</value>
+  </data>
+  <data name="IDS_ERR_NUMETATA" xml:space="preserve">
+    <value>Numele tatalui este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_NRSTRADA" xml:space="preserve">
+    <value>Numarul strazii este obligatoriu!</value>
+  </data>
+  <data name="IDS_FORMATOR_FOLOSIT_IN_PREZENTE" xml:space="preserve">
+    <value>Formatorul este folosit in prezente! Stergerea nu se poate efectua!</value>
+  </data>
+  <data name="IDS_ERR_PRENUMETATA" xml:space="preserve">
+    <value>Prenumele tatalui este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_EMAILREPREZENTANT" xml:space="preserve">
+    <value>Emailul reprezentantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_PRENUMEFORMATOR" xml:space="preserve">
+    <value>Prenumele formatoruluii este obligatoriu!</value>
+  </data>
+  <data name="IDS_CURSANT_ASK_DELETE" xml:space="preserve">
+    <value>Doriti sa stergeti cursantul selectionat?</value>
+  </data>
+  <data name="IDS_ERR_PRETSEDINTE" xml:space="preserve">
+    <value>Pretul abonamentului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_CURSANT_EXISTA" xml:space="preserve">
+    <value>Cursantul exista! Il puteti alege din grid!</value>
+  </data>
+  <data name="IDS_ERR_CNP_CIFRELUNA" xml:space="preserve">
+    <value>Cifrele ce reprezinta luna de nastere din CNP nu sunt valide!</value>
+  </data>
+  <data name="IDS_ERR_NUMEFORMATOR" xml:space="preserve">
+    <value>Numele formatorului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_RESPONSABILCHITANTE" xml:space="preserve">
+    <value>Casierul ce apare pe chitante este obligatoriu!</value>
+  </data>
+  <data name="IDS_LOGIN_UT_PASS_NEVALIDE" xml:space="preserve">
+    <value>Nume utilizator sau parolă nevalide</value>
+  </data>
+  <data name="IDS_ERR_DATAEXPIRAREABONAMENT" xml:space="preserve">
+    <value>Nu se poate introduce data expirare abonament pentru ca exista un abonament in derulare!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_TEL" xml:space="preserve">
+    <value>Telefonul societatii este obligatoriu!</value>
+  </data>
+  <data name="IDS_UT_NU_DIVIZIUNE" xml:space="preserve">
+    <value>Utilizatorul nu are dreptul de conexiune pe diviziunea aleasa!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_SCARA" xml:space="preserve">
+    <value>Scara este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_SUMA_DEPASESTE_VAL_AB" xml:space="preserve">
+    <value>Suma incasata depaseste valoarea abonamentului! Salvare nereusita!</value>
+  </data>
+  <data name="IDS_ERR_DEPASIRE_NR_SEDINTE_PERMISE" xml:space="preserve">
+    <value>Cu numarul de sedinte retro introdus se depasesc sedintele permise de abonament! Doriti sa salvati?</value>
+  </data>
+  <data name="IDS_FORMATOR_ASK_DELETE" xml:space="preserve">
+    <value>Stergeti formatorul selectionat?</value>
+  </data>
+  <data name="IDS_DETALIUABONAMENT_ASK_DELETE" xml:space="preserve">
+    <value>Stergeti abonamentul cursantului?</value>
+  </data>
+  <data name="IDS_ERR_CNP_CIFREZI" xml:space="preserve">
+    <value>Cifrele ce reprezinta ziua de nastere din CNP nu sunt valide!</value>
+  </data>
+  <data name="IDS_ERR_CINUMARCURSANT" xml:space="preserve">
+    <value>Numarul CI a cursantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_CNP_VALID" xml:space="preserve">
+    <value>CNP-ul nu este valid!</value>
+  </data>
+  <data name="IDS_ERR_CNPEXISTA" xml:space="preserve">
+    <value>CNP-ul introdus exista deja!</value>
+  </data>
+  <data name="IDS_ERR_FORMATOR" xml:space="preserve">
+    <value>Formatorul este obligatoriu!</value>
+  </data>
+  <data name="IDS_LOGIN_SOC" xml:space="preserve">
+    <value>Societatea este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CINRREPREZENTANT" xml:space="preserve">
+    <value>Numarul CI a reprezentantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_CNP_PRIMACIFRA" xml:space="preserve">
+    <value>Prima cifra din CNP nu este valida!</value>
+  </data>
+  <data name="IDS_ERR_REPREZENTAND" xml:space="preserve">
+    <value>Descrierea incasarii este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_NUMEMAMA" xml:space="preserve">
+    <value>Numele mamei este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_NUMECURSANT" xml:space="preserve">
+    <value>Numele cursantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_LOGIN_CONN_NEVALIDA" xml:space="preserve">
+    <value>Conexiunea nu este validă, verificaţi fişierul de configurare şi existenţa utilizatorului si a parolei</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_IPSERVER" xml:space="preserve">
+    <value>Ip-ul Serverului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CUI" xml:space="preserve">
+    <value>CUI-ul este obligatoriu!</value>
+  </data>
+  <data name="IDS_CURSANT_FOLOSIT_IN_PREZENTE" xml:space="preserve">
+    <value>Cursantul este folosit în prezente! Stergerea nu se poate efectua!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_AP" xml:space="preserve">
+    <value>Apartamentul este obligatoriu!</value>
+  </data>
+  <data name="IDS_DETALIUPREZENTA_ASK_DELETE" xml:space="preserve">
+    <value>Doriti stergerea prezentei cursantului selectat?</value>
+  </data>
+  <data name="IDS_UT_NU_ULTIMAVERSIUNE" xml:space="preserve">
+    <value>Atentie! Pentru a va conecta trebuie sa aveti instalata ultima versiune a aplicatiei!</value>
+  </data>
+  <data name="IDS_ERR_EXISTA_ABONAMENT_CURSANT_IN_ACCEASI_PERIOADA" xml:space="preserve">
+    <value>Nu se poate introduce abonamentul cursantului pentru ca exista deja un abonament in aceasta perioada!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CODPOSTAL" xml:space="preserve">
+    <value>Codul postal este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CISERIEREPREZENTANT" xml:space="preserve">
+    <value>Seria CI a reprezentantului este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_PRENUMEMAMA" xml:space="preserve">
+    <value>Prenumele mamei este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_STRADACURSANT" xml:space="preserve">
+    <value>Strada este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_CURSANT" xml:space="preserve">
+    <value>Cursantul este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_J" xml:space="preserve">
+    <value>J-ul este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_REPREZENTANT" xml:space="preserve">
+    <value>Reprezentantul este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_BANCA" xml:space="preserve">
+    <value>Banca este obligatorie!</value>
+  </data>
+  <data name="IDS_LOGIN_UTILIZATOR" xml:space="preserve">
+    <value>Specificaţi utilizatorul!</value>
+  </data>
+  <data name="IDS_ABONAMENT_FOLOSIT_IN_CONTRACTE" xml:space="preserve">
+    <value>Abonamentul este folosit in contracte! Stergerea nu se poate efectua!</value>
+  </data>
+  <data name="IDS_LOGIN_DIV" xml:space="preserve">
+    <value>Specificati diviziunea!</value>
+  </data>
+  <data name="IDS_ERR_NRPREZENTERETROACTIV" xml:space="preserve">
+    <value>Numarul de prezente retroactive este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_RESPONSABILDIPLOME" xml:space="preserve">
+    <value>Directorul ce apare pe diplome este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CONT" xml:space="preserve">
+    <value>Contul este obligatoriu!</value>
+  </data>
+  <data name="IDS_ABONEMENT_ASK_DELETE" xml:space="preserve">
+    <value>Doriti sa stergeti abonamentul selectionat?</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_ORAS" xml:space="preserve">
+    <value>Orasul este obligatoriu!</value>
+  </data>
+  <data name="IDS_SAVE_ASK" xml:space="preserve">
+    <value>Salvati datele modificate inainte de iesire?</value>
+  </data>
+  <data name="IDS_ERR_VALOAREINCASARE" xml:space="preserve">
+    <value>Valoarea incasarii este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_CNPREPREZENTANT" xml:space="preserve">
+    <value>CNP-ul reprezentantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_DETALIUABONAMENT_ASK_INSERT" xml:space="preserve">
+    <value>Inserati cursantul in abonament?</value>
+  </data>
+  <data name="IDS_ERR_SUMA_NEGATIVA" xml:space="preserve">
+    <value>Suma trebuie sa fie pozitiva!</value>
+  </data>
+  <data name="IDS_ERR_DATA_WEEKEND" xml:space="preserve">
+    <value>Data selectionata trebuie sa fie o zi de weekend!</value>
+  </data>
+  <data name="IDS_PREZENTA_ASK_DELETE" xml:space="preserve">
+    <value>Doriti sa stergeti prezenta selectionata?</value>
+  </data>
+  <data name="IDS_ERR_TELCURSANT" xml:space="preserve">
+    <value>Telefonul cursantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_TARA" xml:space="preserve">
+    <value>Tara este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_TELREPREZENTANT" xml:space="preserve">
+    <value>Telefonul reprezentantului este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_EXISTACURSANTINPREZENTA" xml:space="preserve">
+    <value>Cursantul este introdus deja!</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_STRADA" xml:space="preserve">
+    <value>Strada este obligatorie!</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CursantArhiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CursantArhiva.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ErrorImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Exclamare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Exclamare.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\new.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\open.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\save.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\search.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_ERR_DATACONTRACT" xml:space="preserve">
+    <value>Data contractului este obligatorie!</value>
+  </data>
+  <data name="IDS_ERR_NRCONTRACT" xml:space="preserve">
+    <value>Numarul de contract este obligatoriu!</value>
+  </data>
+  <data name="IDS_ERR_ABONAMENTEXPIRAT" xml:space="preserve">
+    <value>Abonamentul a expirat!</value>
+  </data>
+  <data name="IDS_CURSANT_FOLOSIT_IN_CONTRACTE" xml:space="preserve">
+    <value>Cursantul este folosit in contracte! Stergerea nu se poate efectua!</value>
+  </data>
+  <data name="IDS_CONTRACT_ASK_DELETE" xml:space="preserve">
+    <value>Doriti sa stergeti contractul selectionat?</value>
+  </data>
+  <data name="IDS_CONTRACT_FOLOSIT_IN_PREZENTE" xml:space="preserve">
+    <value>Contractul este folosit in prezente! Stergerea nu se poate efectua!</value>
+  </data>
+  <data name="IDS_ERR_NRCONTRACT_EXISTA" xml:space="preserve">
+    <value>Acest numar de contract exista deja, alegeti un alt numar!</value>
+  </data>
+  <data name="IDS_ERR_GENERARECONTRACT" xml:space="preserve">
+    <value>Contractul este deja creat! Doriti sa deschideti contractul aferent?</value>
+  </data>
+  <data name="IDS_CONTRACT_FARA_CURSANT" xml:space="preserve">
+    <value>Contractul nu se poate lista intrucat nu are cursanti</value>
+  </data>
+  <data name="IDS_ERR_SOCIETATE_ADRESAREPREZENTANT" xml:space="preserve">
+    <value>Adresa reprezentantului este obligatorie</value>
+  </data>
+  <data name="IDS_ERR_NU_EXISTACURSANT" xml:space="preserve">
+    <value>Cursant inexistent!</value>
+  </data>
+</root>

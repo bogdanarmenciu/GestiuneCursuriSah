@@ -1,0 +1,19 @@
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'CU_Incasari_Cursanti')
+BEGIN
+    CREATE TABLE CU_Incasari_Cursanti (
+        CUIC_Id      int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+        CUIC_CUIN_Id int NOT NULL,
+        CUIC_CUCU_Id int NOT NULL,
+        CONSTRAINT FK_CUIC_CUIN FOREIGN KEY (CUIC_CUIN_Id) REFERENCES CU_Incasari (CUIN_Id),
+        CONSTRAINT FK_CUIC_CUCU FOREIGN KEY (CUIC_CUCU_Id) REFERENCES CU_Cursanti (CUCU_Id)
+    );
+END
+
+
+UPDATE MB_Meniu
+SET MBME_Nume = N'Încasări'
+WHERE MBME_Nume = N'Incasari Abonamente';
+
+UPDATE MB_Meniu
+SET MBME_Nume = N'Antrenori'
+WHERE MBME_Nume = N'Formatori';

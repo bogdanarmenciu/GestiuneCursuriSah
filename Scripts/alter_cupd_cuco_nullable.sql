@@ -1,0 +1,33 @@
+-- Permite prezenta fără contract (cursanți noi fără abonament încă)
+-- CUPD_CUCO_Id devine nullable; FK-ul rămâne (NULL = fără contract)
+
+-- 1. Dacă există un constraint FK, îl eliminăm și îl recreăm ca nullable
+DECLARE @fk NVARCHAR(256);
+SELECT @fk = CONSTRAINT_NAME
+  FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS
+ WHERE UNIQUE_CONSTRAINT_NAME IN (
+     SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+      WHERE TABLE_NAME = 'CU_Contracte' AND CONSTRAINT_TYPE = 'PRIMARY KEY'
+ )
+ AND CONSTRAINT_NAME IN (
+     SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+      WHERE TABLE_NAME = 'CU_PrezenteDetaliu' AND COLUMN_NAME = 'CUPD_CUCO_Id'
+ );
+
+IF @fk IS NOT NULL
+    EXEC('ALTER TABLE CU_PrezenteDetaliu DROP CONSTRAINT ' + @fk);
+
+-- 2. Modificăm coloana să accepte NULL
+ALTER TABLE CU_PrezenteDetaliu
+    ALTER COLUMN CUPD_CUCO_Id INT NULL;
+
+-- 3. Recreăm FK cu ON DELETE SET NULL
+IF @fk IS NOT NULL
+    ALTER TABLE CU_PrezenteDetaliu
+        ADD CONSTRAINT FK_CUPD_CUCO FOREIGN KEY (CUPD_CUCO_Id)
+            REFERENCES CU_Contracte(CUCO_Id);
+
+-- Verificare
+SELECT COLUMN_NAME, IS_NULLABLE
+  FROM INFORMATION_SCHEMA.COLUMNS
+ WHERE TABLE_NAME = 'CU_PrezenteDetaliu' AND COLUMN_NAME = 'CUPD_CUCO_Id';
