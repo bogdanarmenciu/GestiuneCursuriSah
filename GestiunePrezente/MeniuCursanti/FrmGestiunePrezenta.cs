@@ -562,6 +562,23 @@ namespace GestiunePrezente.MeniuCursanti
 
             CInterogareSQL q = new(ManagerDeProiect.GetConnection());
 
+            // Early exit: if student already has an open attendance entry, just close it — no contract dialogs
+            m_sSql = string.Format(@"SELECT CUPD_Id FROM CU_PrezenteDetaliu
+                             WHERE CUPD_CUPR_Id = {0} AND CUPD_CUCU_Id = {1}
+                             AND CUPD_DataIesire IS NULL", m_lCUPR, lCUCU);
+            int lCUPDExit = q.ExecuteToInt(m_sSql);
+            if (lCUPDExit > 0)
+            {
+                q.ExecuteStatement(string.Format(@"UPDATE CU_PrezenteDetaliu
+                    SET CUPD_DataIesire = GETDATE() WHERE CUPD_Id = {0}", lCUPDExit));
+                q.Close();
+                IncarcaPrezente();
+                SelecteazaRandDupaId(lCUPDExit);
+                try { SalveazaIstoric("Cursant iesit din prezenta cu barcode", lCUPDExit); }
+                catch { }
+                return;
+            }
+
             // Verifică contractul + statusul abonamentului pentru data prezentei
             // Col 0: CUCO_Id, Col 1: 1 dacă abonamentul e activ în data prezentei, 0 dacă e expirat/gap
             m_sSql = string.Format(@"SELECT TOP 1 CUCO_Id,
@@ -602,7 +619,6 @@ namespace GestiunePrezente.MeniuCursanti
 
             if (lCUCO == 0)
             {
-                // Verificăm dacă are vreun contract (indiferent de tipul abonamentului)
                 var qHasContract = new CInterogareSQL(ManagerDeProiect.GetConnection());
                 bool hasAnyContract = qHasContract.ExecuteToInt(
                     string.Format("SELECT COUNT(*) FROM CU_ContracteCursanti WHERE CUCC_CUCU_Id={0} AND ISNULL(CUCC_Retras,0)=0", lCUCU)) > 0;
@@ -610,8 +626,6 @@ namespace GestiunePrezente.MeniuCursanti
 
                 if (hasAnyContract)
                 {
-                    // Are contract, dar fără abonamentul potrivit tipului de ședință
-                    // Determinăm tipul ședinței curente
                     var qTip = new CInterogareSQL(ManagerDeProiect.GetConnection());
                     qTip.Open(string.Format(@"SELECT TP.CUTP_SedintaIndividuala
                         FROM CU_Prezente PR
@@ -621,17 +635,16 @@ namespace GestiunePrezente.MeniuCursanti
                     qTip.Close();
 
                     string msgTip = bSedInd
-                        ? "Cursantul nu are abonament de ședință individuală activ pe niciun contract."
-                        : "Cursantul nu are abonament de ședință de grup activ pe niciun contract.";
+                        ? "Cursantul nu are abonament de sedinta individuala activ pe niciun contract."
+                        : "Cursantul nu are abonament de sedinta de grup activ pe niciun contract.";
                     MessageBox.Show(msgTip, "Abonament incompatibil",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // blocare — nu se permite adăugarea
+                    return;
                 }
 
-                // Niciun contract deloc — avertizare, nu blocare
                 DialogResult drNc = MessageBox.Show(
-                    "Atenție: acest cursant nu are niciun contract înregistrat.\n\nIntroduci totuși prezența?",
-                    "Fără contract",
+                    "Atentie: acest cursant nu are niciun contract inregistrat.\n\nIntroduci totusi prezenta?",
+                    "Fara contract",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
                 if (drNc != DialogResult.Yes)
@@ -639,9 +652,8 @@ namespace GestiunePrezente.MeniuCursanti
             }
             else if (!abonamentActiv)
             {
-                // Contract există dar abonamentul e expirat/gap — avertizare, nu blocare
                 DialogResult dr = MessageBox.Show(
-                    "Atenție: abonamentul este expirat sau nu acoperă data acestei ședințe.\n\nIntroduci totuși prezența?",
+                    "Atentie: abonamentul este expirat sau nu acopera data acestei sedinte.\n\nIntroduci totusi prezenta?",
                     "Abonament expirat",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
@@ -649,43 +661,17 @@ namespace GestiunePrezente.MeniuCursanti
                     return;
             }
 
-            int lCUPD = 0;
+            // Insert new attendance entry (exit case handled early above)
+            string sCucoVal = lCUCO > 0 ? lCUCO.ToString() : "NULL";
+            m_sSql = string.Format(@"INSERT INTO CU_PrezenteDetaliu
+                            (CUPD_CUPR_Id,CUPD_CUCO_Id,CUPD_CUCU_Id,CUPD_Prezent,CUPD_DataIntrare)
+                            VALUES ({0},{1},{2},1,GETDATE())",
+                                    m_lCUPR, sCucoVal, lCUCU);
 
-            // Căutare prezență existentă: CUPD_CUCO_Id poate fi NULL (fără contract)
-            string sCucoFilter = lCUCO > 0
-                ? $"AND CUPD_CUCO_Id = {lCUCO}"
-                : "AND CUPD_CUCO_Id IS NULL";
-            m_sSql = string.Format(@"SELECT CUPD_Id
-                             FROM CU_PrezenteDetaliu
-                             WHERE CUPD_CUPR_Id = {0}
-                             {1}
-                             AND CUPD_CUCU_Id = {2}",
-                                     m_lCUPR, sCucoFilter, lCUCU);
+            q.ExecuteStatement(m_sSql);
 
-            lCUPD = q.ExecuteToInt(m_sSql);
-
-            if (lCUPD == 0)
-            {
-                string sCucoVal = lCUCO > 0 ? lCUCO.ToString() : "NULL";
-                m_sSql = string.Format(@"INSERT INTO CU_PrezenteDetaliu
-                                (CUPD_CUPR_Id,CUPD_CUCO_Id,CUPD_CUCU_Id,CUPD_Prezent,CUPD_DataIntrare)
-                                VALUES ({0},{1},{2},1,GETDATE())",
-                                        m_lCUPR, sCucoVal, lCUCU);
-
-                q.ExecuteStatement(m_sSql);
-
-                m_sSql = "SELECT SCOPE_IDENTITY() AS SID";
-                lCUPD = q.ExecuteToInt(m_sSql);
-            }
-            else
-            {
-                m_sSql = string.Format(@"UPDATE CU_PrezenteDetaliu
-                                 SET CUPD_DataIesire = GETDATE()
-                                 WHERE CUPD_Id={0}
-                                 AND CUPD_DataIesire IS NULL", lCUPD);
-
-                q.ExecuteStatement(m_sSql);
-            }
+            m_sSql = "SELECT SCOPE_IDENTITY() AS SID";
+            int lCUPD = q.ExecuteToInt(m_sSql);
 
             q.Close();
 

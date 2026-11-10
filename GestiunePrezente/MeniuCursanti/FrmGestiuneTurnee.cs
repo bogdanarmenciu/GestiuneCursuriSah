@@ -147,8 +147,8 @@ namespace GestiunePrezente.MeniuCursanti
 
         private void m_gParticipanti_SelectionChanged(object sender, EventArgs e)
         {
-            object? cucu = m_gParticipanti.GetColumnData("CUJA_CUCU_Id");
-            m_btnAsociazaCursant.Enabled = cucu == null || cucu == DBNull.Value;
+            object? cutd = m_gParticipanti.GetColumnData("CUTD_Id");
+            m_btnAsociazaCursant.Enabled = cutd != null && cutd != DBNull.Value;
         }
 
         private void m_tsbSalveaza_Click(object sender, EventArgs e)
@@ -321,26 +321,41 @@ namespace GestiunePrezente.MeniuCursanti
             if (cujaVal == null || cujaVal == DBNull.Value) return;
             int cujaId = Convert.ToInt32(cujaVal);
 
-            // dialog inline — form cu combobox de cursanti
+            object? cucuExistent = m_gParticipanti.GetColumnData("CUJA_CUCU_Id");
+            int cucuIdCurent = (cucuExistent != null && cucuExistent != DBNull.Value) ? Convert.ToInt32(cucuExistent) : 0;
+
             var frm = new Form
             {
-                Text = "Asociază cu cursant ONIXTEIA",
-                Size = new Size(420, 150),
+                Text = cucuIdCurent > 0 ? "Schimbă asocierea cursantului" : "Asociază cu cursant ONIXTEIA",
+                Size = new Size(440, 155),
                 StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 MinimizeBox = false, MaximizeBox = false
             };
-            var lbl = new Label { Text = "Cursant:", Location = new Point(12, 20), AutoSize = true };
+            var lbl = new Label { Text = "Cursant:", Location = new Point(12, 22), AutoSize = true };
             var cb  = new ComboBox
             {
                 DropDownStyle = ComboBoxStyle.DropDownList,
-                Location = new Point(80, 16), Size = new Size(300, 23), TabIndex = 0
+                Location = new Point(80, 18), Size = new Size(330, 23), TabIndex = 0
             };
-            foreach (CursantItem c in m_cbCursant.Items) cb.Items.Add(c);
-            if (cb.Items.Count > 0) cb.SelectedIndex = 0;
 
-            var btnOk  = new Button { Text = "Asociază", DialogResult = DialogResult.OK,  Location = new Point(190, 60), Width = 100 };
-            var btnAnn = new Button { Text = "Anulează", DialogResult = DialogResult.Cancel, Location = new Point(300, 60), Width = 90 };
+            // "— Extern —" ca prima optiune pentru a elimina asocierea
+            cb.Items.Add(new CursantItem(0, "— extern —"));
+            foreach (CursantItem c in m_cbCursant.Items) cb.Items.Add(c);
+
+            // pre-selectam cursantul curent daca exista
+            int selectIdx = 0;
+            if (cucuIdCurent > 0)
+            {
+                for (int i = 1; i < cb.Items.Count; i++)
+                {
+                    if (cb.Items[i] is CursantItem ci && ci.Id == cucuIdCurent) { selectIdx = i; break; }
+                }
+            }
+            cb.SelectedIndex = selectIdx;
+
+            var btnOk  = new Button { Text = cucuIdCurent > 0 ? "Schimbă" : "Asociază", DialogResult = DialogResult.OK,     Location = new Point(230, 65), Width = 100 };
+            var btnAnn = new Button { Text = "Anulează",                                 DialogResult = DialogResult.Cancel, Location = new Point(340, 65), Width = 80  };
             frm.Controls.AddRange(new Control[] { lbl, cb, btnOk, btnAnn });
             frm.AcceptButton = btnOk; frm.CancelButton = btnAnn;
 
@@ -350,9 +365,10 @@ namespace GestiunePrezente.MeniuCursanti
             var q = new CInterogareSQL(ManagerDeProiect.GetConnection());
             try
             {
+                object cucuVal = cursant.Id > 0 ? (object)cursant.Id : DBNull.Value;
                 q.ExecuteNonQueryP(
                     "UPDATE CU_Jucatori SET CUJA_CUCU_Id=@cucu WHERE CUJA_Id=@cuja",
-                    CInterogareSQL.P("@cucu", cursant.Id),
+                    CInterogareSQL.P("@cucu", cucuVal),
                     CInterogareSQL.P("@cuja", cujaId));
             }
             catch (Exception ex) { MessageBox.Show("Eroare: " + ex.Message); return; }
